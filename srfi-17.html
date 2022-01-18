@@ -90,7 +90,7 @@ all Scheme implementations should support this feature; it only
 requests that implementations that <em>do</em> implement
 generalized <code>set!</code> should be compatible with this srfi.
 
-<H1>Specification</H1>
+<H1 id="!set">Specification</H1>
 
 The special form <code>set!</code> is extended so the first operand
 can be a procedure application, and not just a variable.
@@ -219,7 +219,7 @@ a way to inherently tie a setter to a procedure, which does reduce
 the problem of inlining generalized <code>set!</code> to the
 standard inlining problem.
 
-<h2><code>getter-with-setter</code></h2>
+<h2 id="getter-with-setter"><code>getter-with-setter</code></h2>
 <p>The function <code>getter-with-setter</code> can be used
 to define a procedure with associated properties. 
 Specifically:
