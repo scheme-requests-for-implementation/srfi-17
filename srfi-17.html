@@ -1,23 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
-<html>
+<html lang="en">
   <head>
     <title>SRFI 17:  Generalized set!</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/srfi.css" type="text/css" />
+    <link rel="stylesheet" href="https://srfi.schemers.org/srfi.css" type="text/css" />
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png">
   </head>
 
 <body>
 
-<H1>Title</H1>
+<h1><a href="https://srfi.schemers.org/"><img class="srfi-logo" src="https://srfi.schemers.org/srfi-logo.svg" alt="SRFI surfboard logo" /></a>17: Generalized <code>set!</code></h1>
 
-Generalized <code>set!</code>
+<p>by Per Bothner</p>
 
-<H1>Author</H1>
-
-Per Bothner
-
-<H1>Status</H1>
+<h2>Status</h2>
 
 <p>This SRFI is currently in <em>final</em> status.  Here is <a href="https://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+17+at+srfi+dotschemers+dot+org">srfi-17@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="https://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="https://srfi-email.schemers.org/srfi-17">archive</a>.</p>
 <UL>
@@ -27,7 +24,7 @@ Per Bothner
 <LI>Final: 2000-07-24
 </UL>
 
-<H1>Abstract</H1>
+<h2>Abstract</h2>
 
 This is a proposal to allow procedure calls that evaluate
 to the "value of a location" to be used to <em>set</em>
@@ -57,7 +54,7 @@ so that it provides similar functionality as Common Lisp's <code>setf</code>,
 except that the updater is associated with a procedure value,
 rather than a name.
 
-<H1>Rationale</H1>
+<h2>Rationale</h2>
 
 There is ample precedent for general "lvalues" on the
 left-hand side of an assignment.  This includes most statically
@@ -90,7 +87,7 @@ all Scheme implementations should support this feature; it only
 requests that implementations that <em>do</em> implement
 generalized <code>set!</code> should be compatible with this srfi.
 
-<H1 id="!set">Specification</H1>
+<h2 id="!set">Specification</h2>
 
 The special form <code>set!</code> is extended so the first operand
 can be a procedure application, and not just a variable.
@@ -138,7 +135,7 @@ a "rest" parameter, then things get more messy.
 However, consistency with the existing new-value-last convention
 seems more valuable.
 
-<h2>Standard setters</h2>
+<h3>Standard setters</h3>
 
 The following standard procedures have pre-defined setters:
 <pre>
@@ -163,7 +160,7 @@ One useful addition:
 variable-length mutable strings.)
 -->
 
-<h2>Setting setters;  properties</h2>
+<h3>Setting setters;  properties</h3>
 
 A setter procedure is a special case of the concept of procedures having
 associated <dfn>properties</dfn>.  Other properties might include
@@ -197,7 +194,7 @@ For example, we can assume
 </pre>
 has been executed by the Scheme prologue.
 
-<h2>Efficiency Issues</h2>
+<h3>Efficiency Issues</h3>
 
 If <code>(set! (foo ..) ...)</code> is to be the preferred idiom,
 we want to make  <code>((setter foo) ...)</code> as efficient
@@ -219,7 +216,7 @@ a way to inherently tie a setter to a procedure, which does reduce
 the problem of inlining generalized <code>set!</code> to the
 standard inlining problem.
 
-<h2 id="getter-with-setter"><code>getter-with-setter</code></h2>
+<h3 id="getter-with-setter"><code>getter-with-setter</code></h3>
 <p>The function <code>getter-with-setter</code> can be used
 to define a procedure with associated properties. 
 Specifically:
@@ -239,7 +236,7 @@ For example, we could define:
 The advantage of this approach that whenever a compiler can inline
 <code>car</code>, it can also inline <code>(setter car)</code>.
 
-<H1>Implementation</H1>
+<h2>Implementation</h2>
 
 <a href="srfi-17-twobit.scm">Here</a> is a sample implementation
 for Twobit.
@@ -251,7 +248,7 @@ for Twobit.
     proc))
 </pre>
 
-<H1>Copyright</H1>
+<h2>Copyright</h2>
 <p>Copyright (C) Per Bothner (1999, 2000). All Rights Reserved.</p>
 
 <p>
